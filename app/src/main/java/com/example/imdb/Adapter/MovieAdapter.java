@@ -45,7 +45,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             super(itemView);
             movieImageView=itemView.findViewById(R.id.movie_imageview);
             movieNameTextView=itemView.findViewById(R.id.movie_year_textview);
-            movieYearTextView=itemView.findViewById(R.id.movie_year_textview);
+            movieYearTextView=itemView.findViewById(R.id.movie_name_textview);
 
 
         }
