@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnItemClickMovie {
     private RecyclerView recyclerView;
     private MovieAdapter movieAdapter;
     private List<MovieModel> movieModelList;
@@ -55,19 +55,25 @@ public class MainActivity extends AppCompatActivity {
         callData();
         //
 
-        recyclerView = findViewById(R.id.recyclerview_movie_list);
-        movieModelList = new ArrayList<>();
-        movieModelList.add(new MovieModel("jont", "9828"));
-        movieModelList.add(new MovieModel("jont", "9828"));
-        movieModelList.add(new MovieModel("jont", "9828"));
-        movieModelList.add(new MovieModel("jont", "9828"));
-        movieModelList.add(new MovieModel("jont", "9828"));
-        movieModelList.add(new MovieModel("jont", "9828"));
+        recyclerView=findViewById(R.id.recyclerview_movie_list);
+        movieModelList =new ArrayList<>();
+        movieModelList.add(new MovieModel("","Th","9093","","","https://m.imdb.com/title/tt11290880/"));
 
-        movieAdapter = new MovieAdapter(movieModelList);
+
+
+
+
+        movieAdapter=new MovieAdapter(this, movieModelList);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(), RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(),RecyclerView.VERTICAL,false));
         recyclerView.setAdapter(movieAdapter);
     }
 
+    @Override
+    public void OnItemClick(MovieModel movieModel) {
+
     }
+}
+
+
+
