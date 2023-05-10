@@ -1,5 +1,4 @@
-package com.example.imdb.Model;
-import java.time.Year;
+package com.example.imdb.model;
 
 public class MovieModel {
     private String image;

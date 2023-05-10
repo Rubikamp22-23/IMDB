@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.imdb.Adapter.MovieAdapter;
-import com.example.imdb.Model.MovieModel;
-import com.example.imdb.Retrofit.ApiClient;
-import com.example.imdb.Retrofit.MovieInterface2;
-import com.example.imdb.Retrofit.retrofitModels.ResponseDataMovie;
+import com.example.imdb.model.MovieModel;
+import com.example.imdb.model.MovieResponse;
+import com.example.imdb.retrofit.ApiClient;
+import com.example.imdb.retrofit.MovieApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,19 +27,19 @@ public class MainActivity extends AppCompatActivity implements OnItemClickMovie 
 
     //retrofit
     private static final String TAG = "MainActivity";
-    private MovieInterface2 movieInterface2;
+    private MovieApiInterface movieApiInterface;
     private void callData(){
-        Call<List<ResponseDataMovie>> movieInterface2ResponseDataMovie = movieInterface2.getResponseDataMovie();
-        movieInterface2ResponseDataMovie.enqueue(new Callback<List<ResponseDataMovie>>() {
+        Call<MovieResponse> movieInterface2ResponseDataMovie = movieApiInterface.getPopularMovie(3);
+        movieInterface2ResponseDataMovie.enqueue(new Callback<MovieResponse>() {
             @Override
-            public void onResponse(Call<List<ResponseDataMovie>> call, Response<List<ResponseDataMovie>> response) {
-                List<ResponseDataMovie> responseDataMovie = response.body();
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+               MovieResponse responseDataMovie = response.body();
                 Log.i(TAG, "onResponse: " + responseDataMovie);
             }
 
             @Override
-            public void onFailure(Call<List<ResponseDataMovie>> call, Throwable throwable) {
-                Log.e(TAG, "onFailure: " + throwable.getMessage() );
+            public void onFailure(Call<MovieResponse> call, Throwable throwable) {
+                Log.i(TAG, "onFailure: " + throwable.getMessage());
             }
         });
     }
@@ -51,16 +51,13 @@ public class MainActivity extends AppCompatActivity implements OnItemClickMovie 
         setContentView(R.layout.activity_main);
 
         //retrofit
-        movieInterface2 = ApiClient.getClient().create(MovieInterface2.class);
+        movieApiInterface = ApiClient.getClient();
         callData();
         //
 
         recyclerView=findViewById(R.id.recyclerview_movie_list);
         movieModelList =new ArrayList<>();
         movieModelList.add(new MovieModel("","Th","9093","","","https://m.imdb.com/title/tt11290880/"));
-
-
-
 
 
         movieAdapter=new MovieAdapter(this, movieModelList);

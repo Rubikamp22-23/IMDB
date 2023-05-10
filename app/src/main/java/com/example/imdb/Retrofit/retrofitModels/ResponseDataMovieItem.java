@@ -1,4 +1,4 @@
-package com.example.imdb.Retrofit.retrofitModels;
+package com.example.imdb.retrofit.retrofitModels;
 
 import com.google.gson.annotations.SerializedName;
 

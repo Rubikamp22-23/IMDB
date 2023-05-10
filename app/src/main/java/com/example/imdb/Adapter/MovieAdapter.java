@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imdb.Data;
 import com.example.imdb.Details;
-import com.example.imdb.Model.MovieModel;
+import com.example.imdb.model.MovieModel;
 import com.example.imdb.OnItemClickMovie;
 import com.example.imdb.R;
 

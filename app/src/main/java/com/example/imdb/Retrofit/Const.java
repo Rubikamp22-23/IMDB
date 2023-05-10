@@ -1,7 +1,7 @@
-package com.example.imdb.Retrofit;
+package com.example.imdb.retrofit;
 
 public class Const {
-    public static final String Base_Url ="https://run.mocky.io/v3/";
-    public static final String api_key ="83642bc5fef95972dc07b206331f9c1b";
+    public static final String BASE_URL ="https://api.themoviedb.org/3/";
+    public static final String API_KEY ="83642bc5fef95972dc07b206331f9c1b";
 
 }
